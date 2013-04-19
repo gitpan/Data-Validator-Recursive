@@ -1,5 +1,3 @@
-.gitignore
-.proverc
 Build.PL
 Changes
 LICENSE
@@ -15,8 +13,5 @@ xt/03_pod-coverage.t
 xt/04_perlcritic.t
 xt/05_script-shebang.t
 xt/perlcriticrc
-Build.PL
-LICENSE
-META.json
 META.yml
 MANIFEST

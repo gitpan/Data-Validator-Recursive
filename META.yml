@@ -10,7 +10,7 @@ configure_requires:
   CPAN::Meta::Prereqs: 0
   Module::Build: 0.38
 dynamic_config: 0
-generated_by: 'Minilla/v0.0.51, CPAN::Meta::Converter version 2.130880'
+generated_by: 'Minilla/v0.0.53, CPAN::Meta::Converter version 2.130880'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -24,10 +24,11 @@ no_index:
     - share
     - eg
     - examples
+    - author
 provides:
   Data::Validator::Recursive:
     file: lib/Data/Validator/Recursive.pm
-    version: 0.02
+    version: 0.03
 requires:
   Data::Validator: 0
   perl: 5.008001
@@ -35,7 +36,7 @@ resources:
   bugtracker: https://github.com/xaicron/p5-Data-Validator-Recursive/issues
   homepage: https://github.com/xaicron/p5-Data-Validator-Recursive
   repository: git://github.com/xaicron/p5-Data-Validator-Recursive.git
-version: 0.02
+version: 0.03
 x_contributors:
   - 'punytan <punytan@gmail.com>'
   - 'xaicron <xaicron@gmail.com>'
