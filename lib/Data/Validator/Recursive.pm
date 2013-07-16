@@ -3,7 +3,7 @@ package Data::Validator::Recursive;
 use strict;
 use warnings;
 use 5.008_001;
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 use Carp 'croak';
 use Data::Validator;
@@ -70,10 +70,21 @@ sub validate {
             map {
                 my $name = $_parent_name ? "$_parent_name.$_->{name}" : $_->{name};
                 my $type = $_->{type};
-                {
+                my ($message, $other_name);
+                if ($type eq 'ExclusiveParameter') {
+                    $other_name = $_parent_name
+                        ? "$_parent_name.$_->{conflict}" : $_->{conflict};
+                    $message = sprintf q{'%s' and '%s' is %s}, $name, $other_name, $type;
+                }
+                else {
+                    $message = sprintf q{'%s' is %s}, $name, $type;
+                }
+
+                +{
+                    type    => $type,
                     name    => $name,
-                    type    => $_->{type},
-                    message => sprintf q{'%s' is %s}, $name, $type,
+                    message => $message,
+                    defined $other_name ? (conflict => $other_name) : (),
                 };
             } @$errors
         ];
