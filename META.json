@@ -4,7 +4,7 @@
       "Yuji Shimada <xaicron {@} GMAIL.COM>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Minilla/v0.14.1",
+   "generated_by" : "Minilla/v1.1.0",
    "license" : [
       "perl_5"
    ],
@@ -58,7 +58,7 @@
    "provides" : {
       "Data::Validator::Recursive" : {
          "file" : "lib/Data/Validator/Recursive.pm",
-         "version" : "0.05"
+         "version" : "0.06"
       }
    },
    "release_status" : "stable",
@@ -72,10 +72,10 @@
          "web" : "https://github.com/xaicron/p5-Data-Validator-Recursive"
       }
    },
-   "version" : "0.05",
+   "version" : "0.06",
    "x_contributors" : [
       "punytan <punytan@gmail.com>",
       "yousuke enomoto <mosaafi@gmail.com>",
-      "Yuji Shimada <xaicron@gmail.com>"
+      "xaicron <xaicron@gmail.com>"
    ]
 }
