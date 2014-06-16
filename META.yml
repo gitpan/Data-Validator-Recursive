@@ -3,18 +3,18 @@ abstract: 'recursive data friendly Data::Validator'
 author:
   - 'Yuji Shimada <xaicron {@} GMAIL.COM>'
 build_requires:
-  Test::More: 0.98
-  Test::Requires: 0.06
+  Test::More: '0.98'
+  Test::Requires: '0.06'
 configure_requires:
-  CPAN::Meta: 0
-  CPAN::Meta::Prereqs: 0
-  Module::Build: 0.38
+  CPAN::Meta: '0'
+  CPAN::Meta::Prereqs: '0'
+  Module::Build: '0.38'
 dynamic_config: 0
-generated_by: 'Minilla/v0.5.6, CPAN::Meta::Converter version 2.131560'
+generated_by: 'Minilla/v0.14.1, CPAN::Meta::Converter version 2.140640'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
-  version: 1.4
+  version: '1.4'
 name: Data-Validator-Recursive
 no_index:
   directory:
@@ -25,18 +25,20 @@ no_index:
     - eg
     - examples
     - author
+    - builder
 provides:
   Data::Validator::Recursive:
     file: lib/Data/Validator/Recursive.pm
-    version: 0.04
+    version: '0.05'
 requires:
-  Data::Validator: 0
-  perl: 5.008001
+  Data::Validator: '0'
+  perl: '5.008001'
 resources:
   bugtracker: https://github.com/xaicron/p5-Data-Validator-Recursive/issues
   homepage: https://github.com/xaicron/p5-Data-Validator-Recursive
   repository: git://github.com/xaicron/p5-Data-Validator-Recursive.git
-version: 0.04
+version: '0.05'
 x_contributors:
   - 'punytan <punytan@gmail.com>'
-  - 'xaicron <xaicron@gmail.com>'
+  - 'yousuke enomoto <mosaafi@gmail.com>'
+  - 'Yuji Shimada <xaicron@gmail.com>'

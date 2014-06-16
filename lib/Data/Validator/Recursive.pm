@@ -3,7 +3,7 @@ package Data::Validator::Recursive;
 use strict;
 use warnings;
 use 5.008_001;
-our $VERSION = '0.04';
+our $VERSION = '0.05';
 
 use Carp 'croak';
 use Data::Validator;
@@ -64,7 +64,7 @@ sub validate {
     my ($self, $params, $_parent_name) = @_;
     $self->{errors} = undef;
 
-    my $result = $self->{validator}->validate($params);
+    my ($result) = $self->{validator}->validate($params);
     if (my $errors = $self->{validator}->clear_errors) {
         $self->{errors} = [
             map {
@@ -96,10 +96,27 @@ sub validate {
         next unless exists $result->{$name};
 
         my $validator = $rule->{validator};
-        my $result_in_nested = $validator->validate($result->{$name}, $_parent_name ? "$_parent_name.$name" : $name);
 
-        if (my $error = $validator->errors) {
-            $self->{errors} = $error;
+        my $result_in_nested;
+        if (ref $result->{$name} eq 'ARRAY') {
+            $result_in_nested = [];
+            my $i = 0;
+            for my $child_params (@{ $result->{$name} }) {
+                my $indexed_name = sprintf('%s[%d]', $name, $i++);
+                my ($child_result) = $validator->validate($child_params, $_parent_name ? "$_parent_name.$indexed_name" : $indexed_name);
+                if (my $errors = $validator->errors) {
+                    $self->{errors} = $errors;
+                    return;
+                }
+                push @$result_in_nested, $child_result;
+            }
+        }
+        else {
+            ($result_in_nested) = $validator->validate($result->{$name}, $_parent_name ? "$_parent_name.$name" : $name);
+        }
+
+        if (my $errors = $validator->errors) {
+            $self->{errors} = $errors;
             return;
         } else {
             $result->{$name} = $result_in_nested;
